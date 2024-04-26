@@ -48,7 +48,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        data["contents"][0]["parts"][0]["text"] = "Olá! Responda em Português de forma clara e não seja prolixa. Ok?"
+        data["contents"][0]["parts"][0]["text"] = "Olá! Responda em Português de forma clara e não seja prolixa. Ok? Você é minha assistentente pessoal de segurança da informação, me ajude com este tema."
         response = requests.post(url, json=data, headers=headers)
         if response.status_code == 200:
             response_data = response.json()
@@ -56,7 +56,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
                 .get("content", {})
                 .get("parts", [{}])[0]
                 .get("text", "Texto não encontrado"))
-            speak_output = "Olá, sou sua assistente inteligente. " + text + " Como posso te ajudar?"
+            speak_output = "Modo Matrix Ativado. " + text + " Como posso te ajudar?"
             response_text = {
                 "role": "model",
                 "parts": [{
